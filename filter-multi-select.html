@@ -612,35 +612,6 @@
 
         $(document).ready(function() {
             filterMultiSelect();
-
-            table.on('search.dt', function() {
-            table.columns().every(function() {
-              var that = this;
-              $('input[type="search"]', this.footer()).on('keyup change', function() {
-                if (that.search() !== this.value) {
-                  that
-                    .search(this.value)
-                    .draw();
-                }
-              });
-            });
-          });
-        
-          table.on('draw', function() {
-            var keyword = $('input[type="search"]').val();
-            if (keyword) {
-              $('tbody td').each(function() {
-                var text = $(this).text();
-                var regex = new RegExp(keyword, 'gi');
-                var newText = text.replace(regex, '<span class="highlight">$&</span>');
-                $(this).html(newText);
-              });
-            } else {
-              $('tbody td').each(function() {
-                $(this).html($(this).text());
-              });
-            }
-          });
         });
     </script>
 </body>
